@@ -2,11 +2,23 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   redux: Ember.inject.service('standups'),
-  actions: Ember.inject.service('actions'),
+  actionHandlers: Ember.inject.service('actions'),
 
   model() {
-    this.get('actions.startStandup')();
+    this.get('actionHandlers.startStandup')();
 
     return this.get('redux');
+  },
+
+  actions: {
+    registerInputGrabber() {
+      return this.get('actionHandlers.standupRegisterInputGather')(...arguments);
+    },
+
+    submit(ev) {
+      ev.preventDefault();
+
+      this.get('actionHandlers.submitStandup')();
+    },
   },
 });

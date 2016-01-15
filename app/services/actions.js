@@ -18,8 +18,8 @@ export default Ember.Service.extend({
     const store = this.get('redux.store');
     const action = get(this, `actions.${name}`);
 
-    return () => {
-      store.dispatch(action(...arguments));
+    return (...rest) => {
+      store.dispatch(action(...rest));
     };
   },
 });
