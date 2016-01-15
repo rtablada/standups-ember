@@ -5,7 +5,8 @@ export default Ember.Route.extend({
   actions: Ember.inject.service('actions'),
 
   model() {
-    debugger;
-    this.get('actions')
-  }
+    this.get('actions.startStandup')();
+
+    return this.get('redux');
+  },
 });

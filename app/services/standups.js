@@ -13,6 +13,7 @@ export default Ember.Service.extend({
     this._super(...arguments);
 
     this.createStore();
+    this.subscribeState();
   },
 
   createStore() {
@@ -24,5 +25,13 @@ export default Ember.Service.extend({
     const store = finalCreateStore(appReducer, initialState);
 
     this.set('store', store);
+  },
+
+  subscribeState() {
+    const store = this.get('store');
+
+    store.subscribe(() => {
+      this.set('state', store.getState());
+    });
   },
 });

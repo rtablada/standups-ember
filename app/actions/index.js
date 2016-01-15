@@ -7,5 +7,5 @@ export default {
   startStandup,
   standupRegisterInputGather,
   submitStandup,
-  standupFetchForDate,
+  // standupFetchForDate,
 };

@@ -1,1 +1,21 @@
-{{outlet}}
+<form className="container" onSubmit= {{route-action 'submit'}}>
+  <h2>Standups</h2>
+
+  <table>
+    <thead>
+      <tr className="flexi-row">
+        <th></th>
+        <th>Done</th>
+        <th>Next</th>
+        <th>Help</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each model.state.currentStandup.teamMembers as |teamMember|}}
+        <li>{{teamMember}}</li>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <button>Submit</button>
+</form>
